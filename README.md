@@ -7,5 +7,17 @@ This is an application developed using `react native` that gives the information
 - IOS
 - Android
 - Web
+## Screenshots
+ ### Home Screen
+  <img src="assets/home.jpg" width="300"> 
+
+### Vaccinations Screen
+ <img src="assets/vaccinations.jpg" width="300"> 
+
+### About Screen
+ <img src="assets/about.jpg" width="300"> 
+ 
+ ## Demo
+ You can find the prebuilt `apk` file in the `releases` section.
 
 
