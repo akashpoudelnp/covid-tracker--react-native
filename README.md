@@ -19,5 +19,7 @@ This is an application developed using `react native` that gives the information
  
  ## Demo
  You can find the prebuilt `apk` file in the `releases` section.
-
-
+ 
+ # API Used
+- Open Disease Data API [disease.sh](https://disease.sh)
+- Today's Nepali Date API [akashpoudel.com.np](https://akashpoudel.com.np/nepalidate.php?api=true)
