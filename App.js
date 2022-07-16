@@ -1,31 +1,40 @@
-import { Linking, StyleSheet, Text, View } from 'react-native';
-import Info from './components/Info';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import Home from './components/Home';
+import Vaccinations from './components/Vaccinations';
+import About from './components/About';
 
 export default function App() {
+  const Tab = createBottomTabNavigator();
   return (
-    <View style={styles.container}>
-      <View style={styles.infoWrapper}>
-        <Text style={styles.title}>Today's Cases</Text>
-        <Text style={{ fontSize: 15 }}>Covid Records of Nepal</Text>
-        <Info />
-      </View>
-      <Text style={{ marginTop: '20%', paddingLeft: 30 }} onPress={() => Linking.openURL('https://akashpoudel.com.np')}>Made with ❤️  by Aakash </Text>
-    </View>
+    <NavigationContainer >
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'ios-home'
+                : 'ios-home-outline';
+            } else if (route.name === 'Vaccinations') {
+              iconName = focused ? 'ios-medical' : 'ios-medical-outline';
+            }
+            else if (route.name === 'About') {
+              iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'teal',
+          tabBarInactiveTintColor: 'gray',
+          headerShown: false,
+        })}
+      >
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Vaccinations" component={Vaccinations} />
+        <Tab.Screen name="About" component={About} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  infoWrapper: {
-    marginTop: "10%",
-    padding: '5%',
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
-
-});

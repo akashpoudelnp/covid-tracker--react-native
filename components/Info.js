@@ -1,9 +1,10 @@
 import { faBed, faBedPulse, faChartBar, faPerson, faPrescriptionBottleAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import loadingGif from "../assets/gif/loading.gif";
 import notFound from "../assets/not-found.jpg";
+import Card from "./Card";
 
 export default function Info() {
     const url = "https://disease.sh/v3/covid-19/countries/nepal?strict=true";
@@ -16,6 +17,7 @@ export default function Info() {
             .then(data => {
                 setData(data);
                 setLoading(false);
+                setError(false);
             }
             )
             .catch(err => {
@@ -34,7 +36,6 @@ export default function Info() {
                 </View>
 
             }
-
             {error &&
                 <View style={styles.errorImage}>
                     <Image source={loadingGif} />
@@ -51,58 +52,18 @@ export default function Info() {
                         <Text style={{ fontSize: 15, }}>Please check your internet connection</Text>
                     </View>
                     :
-                    <View>
+                    <ScrollView style={{ marginBottom: '30%' }}>
                         {/* Infected Today */}
-                        <View style={styles.info}>
-                            <FontAwesomeIcon color="teal" size="25" icon={faChartBar} />
-                            <Text style={styles.infoTitle}>
-                                Infected Today:
-                            </Text>
-                            <Text style={styles.infoValue}>
-                                {data.todayCases}
-                            </Text>
-                        </View>
+                        <Card title="Infected Today" value={data.todayCases} icon="ios-calendar-outline" />
                         {/* Deaths Today */}
-                        <View style={styles.info}>
-                            <FontAwesomeIcon color="teal" size="25" icon={faBed} />
-                            <Text style={styles.infoTitle}>
-                                Deaths Today:
-                            </Text>
-                            <Text style={styles.infoValue}>
-                                {data.todayDeaths}
-                            </Text>
-                        </View>
+                        <Card title="Deaths Today" value={data.todayDeaths} icon="ios-bed-outline" />
                         {/* Recovered Today */}
-                        <View style={styles.info}>
-                            <FontAwesomeIcon color="teal" size="25" icon={faPerson} />
-                            <Text style={styles.infoTitle}>
-                                Recovered Today:
-                            </Text>
-                            <Text style={styles.infoValue}>
-                                {data.todayRecovered}
-                            </Text>
-                        </View>
+                        <Card title="Recovered Today" value={data.todayRecovered} icon="ios-man-outline" />
                         {/* Active Cases */}
-                        <View style={styles.info}>
-                            <FontAwesomeIcon color="teal" size="25" icon={faBedPulse} />
-                            <Text style={styles.infoTitle}>
-                                Active Cases:
-                            </Text>
-                            <Text style={styles.infoValue}>
-                                {data.active}
-                            </Text>
-                        </View>
+                        <Card title="Active Cases" value={data.active} icon="ios-medkit-outline" />
                         {/* Total Cases */}
-                        <View style={styles.info}>
-                            <FontAwesomeIcon color="teal" size="25" icon={faPrescriptionBottleAlt} />
-                            <Text style={styles.infoTitle}>
-                                Total Cases:
-                            </Text>
-                            <Text style={styles.infoValue}>
-                                {data.cases}
-                            </Text>
-                        </View>
-                    </View>
+                        <Card title="Total Cases" value={data.cases} icon="ios-bar-chart-outline" />
+                    </ScrollView>
             }
         </View>
     );
@@ -111,7 +72,7 @@ const styles = StyleSheet.create({
     infoList: {
         justifyContent: 'center',
         flexDirection: 'column',
-        marginTop: '15%',
+        marginTop: '5%',
     },
     info: {
         marginVertical: 8,
