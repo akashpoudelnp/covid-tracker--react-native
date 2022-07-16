@@ -18,7 +18,7 @@ This is an application developed using `react native` that gives the information
  <img src="assets/about.jpg" width="300"> 
  
  ## Demo
- You can find the prebuilt `apk` file in the `releases` section.
+ You can find the prebuilt `apk` file in the [releases](https://github.com/akashpoudelnp/covid-tracker-react-native/releases) section.
  
  # API Used
 - Open Disease Data API [disease.sh](https://disease.sh)
