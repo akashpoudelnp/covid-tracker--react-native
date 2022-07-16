@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "my-notes",
-    "slug": "my-notes",
-    "version": "1.0.0",
+    "name": "COVID Daily Nepal Edition",
+    "description": "The COVID Daily Nepal Edition developed by Aakash Tracks daily covid information.",
+    "slug": "covid-tracker-nepal",
+    "version": "0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,6 +22,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "np.com.akashpoudel.coviddailynepal",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
