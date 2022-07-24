@@ -22,4 +22,4 @@ This is an application developed using `react native` that gives the information
  
  # API Used
 - Open Disease Data API [disease.sh](https://disease.sh)
-- Today's Nepali Date API [akashpoudel.com.np](https://akashpoudel.com.np/nepalidate.php?api=true)
+- Today's Nepali Date API [akashpoudel.com.np](https://nepaltime.akashpoudel.com.np)
